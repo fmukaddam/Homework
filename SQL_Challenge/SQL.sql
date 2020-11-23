@@ -35,14 +35,7 @@ CREATE TABLE salaries (
     employee_no INT,
     salary MONEY,
 	FOREIGN KEY (employee_no) REFERENCES employees (employee_no));
-
-DROP TABLE titles
-DROP TABLE employees
-DROP TABLE departments
-DROP TABLE dept_employee
-DROP TABLE dept_manager
-DROP TABLE salaries
-
+	
 SELECT * FROM departments
 SELECT * FROM titles
 SELECT * FROM employees
