@@ -14,18 +14,18 @@ CREATE TABLE employees (
     birth_date DATE NOT NULL,
     first_name VARCHAR(20) NOT NULL,
     last_name VARCHAR(20) NOT NULL,
-    sex VARCHAR(2) NOT NULL,
+    gender VARCHAR(2) NOT NULL,
     hire_date DATE  NOT NULL
 );
 
 CREATE TABLE dept_employee (
     employee_no INT,
-	dept_no VARCHAR(100),
+	dept_no VARCHAR(20),
 	FOREIGN KEY (employee_no) REFERENCES employees (employee_no),
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no));
 
 CREATE TABLE dept_manager (
-    dept_no VARCHAR(100),
+    dept_no VARCHAR(20),
     employee_no INT,
 	FOREIGN KEY (employee_no) REFERENCES employees (employee_no),
 	FOREIGN KEY (dept_no) REFERENCES departments (dept_no));
@@ -43,9 +43,12 @@ SELECT * FROM dept_employee
 SELECT * FROM dept_manager
 SELECT * FROM salaries
 
-
+DROP TABLE employees
+DROP TABLE dept_employee
+DROP TABLE dept_manager
+DROP TABLE salaries
 --1) List the following details of each employee: employee number, last name, first name, sex, and salary.
-SELECT a.employee_no, a.last_name, a.first_name, a.sex, b.salary
+SELECT a.employee_no, a.last_name, a.first_name, a.gender, b.salary
 FROM employees a
 JOIN salaries b
 on a.employee_no = b.employee_no;
@@ -72,10 +75,10 @@ FROM dept_employee a
 JOIN employees b
 ON a.employee_no = b.employee_no
 JOIN departments c
-ON b.dept_no = c.dept_no;
+ON a.dept_no = c.dept_no;
 
 --5)List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
-SELECT first_name, last_name, sex
+SELECT first_name, last_name, gender
 FROM employees
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%'
 
