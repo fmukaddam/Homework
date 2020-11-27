@@ -34,18 +34,12 @@ CREATE TABLE "Departments" (
 
 CREATE TABLE "Dept_employee" (
     "employee_no" INT   NOT NULL,
-    "dept_no" VARCHAR(100)   NOT NULL,
-    CONSTRAINT "pk_Dept_employee" PRIMARY KEY (
-        "employee_no","dept_no"
-     )
+    "dept_no" VARCHAR(100)   NOT NULL
 );
 
 CREATE TABLE "Dept_manager" (
     "employee_no" INT   NOT NULL,
-    "dept_no" VARCHAR(100)   NOT NULL,
-    CONSTRAINT "pk_Dept_manager" PRIMARY KEY (
-        "employee_no","dept_no"
-     )
+    "dept_no" VARCHAR(100)   NOT NULL
 );
 
 CREATE TABLE "Salaries" (
