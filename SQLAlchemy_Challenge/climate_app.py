@@ -1,6 +1,6 @@
 import numpy as np
 from sqlalchemy.ext.automap import automap_base
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy import create_engine, func
 from flask import Flask, jsonify
 import datetime as dt
@@ -18,14 +18,14 @@ Measurement = Base.classes.measurement
 Station = Base.classes.station
 
 #Create Session
-session = Session(engine)
+session = scoped_session(sessionmaker(bind=engine))
 
 first_date = session.query(Measurement.date).order_by((Measurement.date)).limit(1).all()
-print(first_date[0][0])
+#print(first_date[0][0])
 last_date = session.query(Measurement.date).order_by((Measurement.date).desc()).limit(1).all()
-print(last_date[0][0])
+#print(last_date[0][0])
 last_year = (dt.datetime.strptime(last_date[0][0], '%Y-%m-%d') - dt.timedelta(days=365)).date()
-print(last_year)
+#print(last_year)
 
 #Setup Flask
 app = Flask(__name__)
@@ -36,17 +36,16 @@ def welcome():
     return (
         "Welcome to the Hawaii weather API !<br/>"
         f"These are the available routes:<br/>"
-        f"/api/v1.0/precipitation<br/> - Returns a JSON representation of percipitation data<br/>"
-        f"/api/v1.0/stations<br/> - Returns a JSON list of the weather stations<br/>"
-        f"/api/v1.0/tobs<br/> - Returns a JSON list of the Temperature Observations (tobs) for each station<br/>"
-        f"/api/v1.0/yourstartdate(yyyy-mm-dd)<br/> - Returns a JSON list of the minimum temperature, the average temperature, and the max temperature for the dates from the given start date in yyyy-mm-dd format<br/>"
-        f"/api/v1.0/start_date(yyyy-mm-dd)/end_date(yyyy-mm-dd)<br/> - Returns a JSON list of the minimum temperature, the average temperature, and the max temperature for the dates between the given start date and end date<br/>")
+        f"/api/v1.0/precipitation <br/>"
+        f"/api/v1.0/stations <br/>"
+        f"/api/v1.0/tobs <br/>"
+        f"/api/v1.0/2016-08-23 <br/>"
+        f"/api/v1.0/2016-08-23/2017-08-23 <br/>")
 
 
 @app.route("/api/v1.0/precipitation")
 def precipitation():
     print("API precipitation request received")
-    
     results = session.query(Measurement.date, Measurement.prcp).filter(Measurement.date > last_year).order_by(Measurement.date).all()
     precipitation_data = []
     for prcp_total in results:
@@ -68,6 +67,7 @@ def station():
 @app.route("/api/v1.0/tobs")
 def tobs():
 	print("Status of Tobs :OK")
+	last_year = dt.date(2016, 8, 23)
 	#query for the dates and temperature observations from a year from the last data point
 	tobs_results = session.query(Measurement.date, Measurement.tobs).filter(Measurement.date >= last_year).order_by(Measurement.date).all()
 	# Create a list of dicts with `date` and `tobs` as the keys and values
@@ -90,8 +90,9 @@ def start_date(start):
 		return(f"Select date range between {first_date[0][0]} and {last_date[0][0]}")
 	else:
 		final_calc = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).filter(Measurement.date >= start_date).all()
-		start_date_data = list(np.ravel(final_calc))
-		return jsonify(start_date_data)
+		#start_date_data = list(np.ravel(final_calc))
+		df = {"Min_Temperature" : final_calc[0][0], "Avg_Temperature":final_calc[0][1], "Max_Temperature":final_calc[0][2]}
+		return jsonify(df)
 
 @app.route("/api/v1.0/<start>/<end>")
 def end_date(start,end):
@@ -105,8 +106,8 @@ def end_date(start,end):
 		return(f"Select date range between {first_date[0][0]} and {last_date[0][0]}")
 	else:
 		calc_temp = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs),func.max(Measurement.tobs)).filter(Measurement.date >= start_date).filter(Measurement.date <= end_date).all()
-		start_end_data = list(np.ravel(calc_temp))
-		return jsonify(start_end_data)
+		df2 = {"Min_Temperature" : calc_temp[0][0], "Avg_Temperature":calc_temp[0][1], "Max_Temperature":calc_temp[0][2]}
+		return jsonify(df2)
 
 if __name__ == "__main__":
     app.run(debug=True)
