@@ -1,10 +1,12 @@
 <!DOCTYPE html>            
-                  <html lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Data Dashboard</title>
+  <!-- Boostrap Stylesheet -->
   <link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href = "style.css">
   <style>
         body {background-color: ghostwhite}
@@ -17,31 +19,31 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="Index.html">Latitude</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="Temperature.html">Max Temperature</a></li>
+          <li><a href="Cloudiness.html">Cloudiness</a></li>
+          <li><a href="Humidity.html">Humidity</a></li>
+          <li><a href="Windspeed.html">Wind Speed</a></li>
+        </ul>
+        </li>
+          <li><a href="Comparison.html">Comparison</a></li>
+          <li><a href="Data.html">Data</a></li>
+        </ul>
+      </div>
     </div>
-    <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plots <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-      <li><a href="Temperature.html">Max Temperature</a></li>
-      <li><a href="Cloudiness.html">Cloudiness</a></li>
-      <li><a href="Humidity.html">Humidity</a></li>
-      <li><a href="Windspeed.html">Wind Speed</a></li>
-      </ul>
-      </li>
-      <li><a href="Comparison.html">Comparison</a></li>
-      <li><a href="Data.html">Data</a></li>
-    </ul>
-    </div>
-  </div>
-</nav>
-    <br>
+  </nav>
+  <br>
 
     <div class="container">   
-        <div class="title">
-            <h1>Data</h1>
-            <p class= content>The following data includes all the data used for plotting during this project.</p>
-            <hr>
-            <br> 
+      <div class="title">
+        <h1>Data</h1>
+          <p class= content>The following data includes all the data used for plotting during this project.</p>
+          <hr>
+          <br> 
     <table id= "maintable" border="1" class="dataframe">
       <table class="table table-bordered table-hover table-condensed">
         <thead><tr><th title="Field #1">City_ID</th>
