@@ -1,0 +1,134 @@
+h1 {
+    color: #5EBBB9;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    background-color:#5EBBB9;
+}
+
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-expand-lg {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;;
+    color: white;
+}
+
+.navbar-right {
+    color: white;
+
+
+}
+
+.navbar-brand {
+    font-size: 20px;
+    background-color: #5EBBB9  ;
+    color: white;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.headline {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.content {
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+    padding: 10px;
+    line-height: 1.5;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.text {
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+    padding: 10px;
+    line-height: 1.5;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.container h1 {
+    
+    margin-left: 10px;
+}
+
+.container h2 {
+    padding-top: 30px;
+    padding-left: 20px;;
+}
+
+.container img {
+    display: inline;
+    margin: 20px 20px;
+}
+
+.col-lg-8 {
+    border-right: solid ghostwhite;
+    border-right-width: 40px;
+    padding: 40px;
+}
+
+.col-md-6 {
+    margin-left: -10px;
+}
+
+#maintable {  
+    width: 100%;
+    border-collapse: collapse; 
+    border-spacing: 40px;
+    padding: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#maintable td, th { 
+    border: 1px solid lightskyblue; 
+    text-align:  center;
+    font-family: 'Times New Roman', Times, serif;}  
+
+
+#maintable th {  
+    background: lightgray; 
+    font-weight: bold; 
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#maintable td {  
+    background: lightskyblue; 
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+ 
+td {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.col-lg-8 {
+    border-bottom: solid ghostwhite;
+    border-right: 20px;
+    border-bottom-width: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.header {
+    color: #5EBBB9;
+    text-align: center;
+    font-weight: bold;
+}
