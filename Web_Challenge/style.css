@@ -105,13 +105,13 @@ h3 {
 
 
 #maintable th {  
-    background: lightgray; 
+    background: #5EBBB9 ; 
     font-weight: bold; 
     font-family: 'Times New Roman', Times, serif;
 }
 
 #maintable td {  
-    background: lightskyblue; 
+    background: #5EBBB9 ; 
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -136,3 +136,18 @@ td {
 .row {
     padding: 10px;
 }
+
+@media screen and (max-width: 600px) {
+    nav {
+        background-color: #5EBBB9;
+    }
+}
+
+.navbar-expand-lg {
+    @media only screen and (max-width: 680px) {background:#5EBBB9;}
+}
+
+@media (max-width: 680px) {
+    .navbar-right     { display: none; }
+    nav select { display: inline-block }
+  }
