@@ -14,7 +14,7 @@ h3 {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.navbar-expand-lg {
+.shrink {
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;;
     color: white;
@@ -26,7 +26,7 @@ h3 {
 
 }
 
-.navbar-brand {
+.top_head {
     font-size: 20px;
     background-color: #5EBBB9  ;
     color: white;
@@ -66,28 +66,7 @@ h3 {
     padding-left: 20px;
 }
 
-.container h1 {
-    
-    margin-left: 10px;
-}
-
-.container h2 {
-    padding-top: 30px;
-    padding-left: 20px;;
-}
-
-.container img {
-    display: inline;
-    margin: 20px 20px;
-}
-
-.col-lg-8 {
-    border-right: solid ghostwhite;
-    border-right-width: 40px;
-    padding: 40px;
-}
-
-.col-md-6 {
+.box {
     margin-left: -10px;
 }
 
@@ -120,7 +99,7 @@ td {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.col-lg-8 {
+.resize {
     border-bottom: solid ghostwhite;
     border-right: 20px;
     border-bottom-width: 50px;
@@ -133,21 +112,21 @@ td {
     font-weight: bold;
 }
 
-.row {
+.format {
     padding: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
     nav {
         background-color: #5EBBB9;
     }
 }
-
+@media only screen and (max-width: 750px) {
 .navbar-expand-lg {
-    @media only screen and (max-width: 680px) {background:#5EBBB9;}
+     background:#5EBBB9;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 750px) {
     .navbar-right     { display: none; }
     nav select { display: inline-block }
   }
