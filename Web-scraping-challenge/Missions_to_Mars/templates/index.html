@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image" href="https://www.google.com/imgres?imgurl=http%3A%2F%2Fimages.ctfassets.net%2F3s5io6mnxfqz%2F2VvogyEVZPpfXN8X8hqcwh%2F832e089800b2774ff722e89781796945%2FAdobeStock_214131404.jpeg&imgrefurl=https%3A%2F%2Fwww.masterclass.com%2Farticles%2Fwhat-is-the-weather-like-on-mars-learn-about-the-martian-atmosphere-and-the-possibility-of-human-exploration-to-the-red-planet&tbnid=wo4hXC-m2YoU_M&vet=12ahUKEwjugNGlj-jtAhVDXs0KHSw9CjMQMygCegUIARDUAQ..i&docid=Cw0o65UtsT8G9M&w=1200&h=600&q=mars%20planet&ved=2ahUKEwjugNGlj-jtAhVDXs0KHSw9CjMQMygCegUIARDUAQ">
+    <title>Mission to Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+</head>
+
+<body class="text-white" style="background-color:black;">
+    <div class="container">
+
+        <!-- Jumbotron -->
+        <div class="jumbotron text-center" style="background-image: url(https://cdn.theatlantic.com/static/mt/assets/science/0831Pic.jpg); background-size: 100%; height: 100%;">
+            <h1 class="display-4">Mission to Mars</h1>
+            <a class="btn btn-lg text-white" style="background-color:#c1440e;" href="/scrape" role="button">Scrape New
+                Data</a>
+        </div>
+
+        <!-- News Section -->
+        <div class="container">
+            <h3>Latest Mars News</h3>
+            <h5 style="color: skyblue">{{mars_info.title_news}}</h5>
+            <p>{{mars_info.article_text}}</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <h3>Featured Mars Image</h3>
+                    <img src="{{mars_info.featured_img_url}}" style="max-width:70%; max-height: auto;" alt="Mars Featured Image">
+                </div>
+                <!-- Table -->
+            
+                <div class="col-md-4 col-sm-12">
+                    <h3>Mars Facts</h3>
+                    {{mars_info.mars_facts|safe}}
+                </div> <!-- col4 -->
+            </div><!-- Row -->
+        </div><!-- Container -->
+
+<!--Hemispheres-->
+<h3 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h3>
+    <div class="card-deck">
+    <hr>
+<!--Add images hemispheres here -->
+{% for hemisphere in mars_info.hemisphere_img %}
+    <div class = "col-md-6">
+        <div class=thumbnail>
+            <img src="{{hemisphere.img_url}}" style="max-width:80%; max-height: auto;" alt="Mars Featured Image">
+                    <div class="card-body text-center">
+                        <p class="card-text">{{ hemisphere.title }} </p>
+                </div>
+        </div>
+    </div>
+{% endfor %}
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
