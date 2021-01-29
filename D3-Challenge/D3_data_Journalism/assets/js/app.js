@@ -1,6 +1,6 @@
 // Set up height and width of the chart area
-var svgWidth = 960;
-var svgHeight = 870;
+var svgWidth = 900;
+var svgHeight = 600;
 
 //Set margins
 var margin = {
@@ -11,7 +11,7 @@ var margin = {
 };
 
 var chartWidth = svgWidth - margin.left - margin.right;
-var chartHeight = svgHeight = margin.top - margin.bottom;
+var chartHeight = svgHeight - margin.top - margin.bottom;
 
 //Append the svg group that will hold the chart
 
@@ -59,7 +59,7 @@ d3.csv("/assets/data/data.csv").then(function(stateData) {
         .append("circle")
         .attr("cx", d => xScale(d.poverty))
         .attr("cy", d => yScale(d.healthcare))
-        .attr("r", 10)
+        .attr("r", 15)
         .attr("fill", "lightblue")
         .attr("opacity", ".4")
         .attr("stroke-width", "1")
@@ -68,7 +68,7 @@ d3.csv("/assets/data/data.csv").then(function(stateData) {
         chartGroup.append("text")
         .style("text-anchor", "middle")
         .style("font-family", "Times New Roman")
-        .style("font-size", "7px")
+        .style("font-size", "10px")
         .selectAll("tspan")
         .data(stateData)
         .enter()
@@ -91,7 +91,7 @@ d3.csv("/assets/data/data.csv").then(function(stateData) {
     .style("background", "lightsteelblue")
     .style("pointer-events", "none")
     .html(function(d) {
-        return (`${d.state}<br>Population In Poverty (%): ${d.poverty}<br>Lacks Healthcare (%): ${d.healthcare}`)
+        return (`${d.state}<br> Population In Poverty (%): ${d.poverty}<br> Lacks Healthcare (%): ${d.healthcare}`)
     });      
 
 // tooltip in the chart
@@ -117,7 +117,7 @@ chartGroup.append("text")
     .text("Lacks Healthcare (%)");
 
 chartGroup.append("text")
-    .attr("transform", `translate(${chartWidth / 2.5}, ${chartHeight + margin.top + 30})`)
+    .attr("transform", `translate(${chartWidth / 2.5}, ${chartHeight + margin.bottom - 10})`)
     .attr("class", "axisText")
     .text("In Poverty (%)");
 
